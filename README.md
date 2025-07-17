@@ -42,7 +42,7 @@ DoughNation is a Node.js backend API built with Express.js, PostgreSQL, Prisma O
 
 ### 1. Clone the repository
 
-```bash
+
 git clone https://github.com/spanzyteo/doughnation-backend.git
 cd doughnation
 
