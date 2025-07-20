@@ -6,6 +6,7 @@ import { config } from 'dotenv';
 import { v2 as cloudinary } from 'cloudinary';
 import fileupload from 'express-fileupload'
 import authRoutes from './src/routes/authRoutes'
+import cors from 'cors';
 
 config();
 
@@ -29,6 +30,13 @@ app.use('/api/v1', reviewRouter)
 
 // Authentication
 app.use('/api/auth', authRoutes)
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://doughnation.vercel.app/"],
+    credentials: true
+  })
+);
 
 
 app.listen(PORT, () => {
