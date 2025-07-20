@@ -20,6 +20,14 @@ cloudinary.config({
 });
 
 app.use(express.json())
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://doughnation.vercel.app/"],
+    credentials: true
+  })
+);
+
 app.use(fileupload({
   useTempFiles: true
 }))
@@ -31,12 +39,6 @@ app.use('/api/v1', reviewRouter)
 // Authentication
 app.use('/api/auth', authRoutes)
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://doughnation.vercel.app/"],
-    credentials: true
-  })
-);
 
 
 app.listen(PORT, () => {
