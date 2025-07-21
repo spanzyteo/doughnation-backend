@@ -96,6 +96,11 @@ const getAllProjects = async (req: any, res: any) => {
           select: {
             name: true
           }
+        },
+        user: {
+          select: {
+            name: true
+          }
         }
       }
     });
@@ -113,6 +118,18 @@ const getProject = async (req: any, res: any) => {
     const { id } = req.params;
     const projectId = await prisma.project.findUnique({
       where: { id },
+      include: {
+        category: {
+          select: {
+            name: true
+          }
+        },
+        user: {
+          select: {
+            name: true
+          }
+        }
+      }
     });
     if (!projectId) {
       return res.status(StatusCodes.NOT_FOUND).json({
