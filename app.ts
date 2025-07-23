@@ -13,6 +13,13 @@ config();
 const app =  express()
 const PORT = process.env.PORT || 5000
 
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://doughnation.vercel.app/"],
+    credentials: true
+  })
+);
+
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_API_KEY,
@@ -20,13 +27,6 @@ cloudinary.config({
 });
 
 app.use(express.json())
-
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://doughnation.vercel.app/"],
-    credentials: true
-  })
-);
 
 app.use(fileupload({
   useTempFiles: true
